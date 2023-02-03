@@ -135,6 +135,10 @@ public class BaseFormatter implements NumberFormatter
 
             }
         }
+        if(output.equals(""))
+        {
+            output = "0";
+        }
         return output;
     }
 }
