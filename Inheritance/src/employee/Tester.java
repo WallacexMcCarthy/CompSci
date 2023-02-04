@@ -1,7 +1,5 @@
 package employee;
 
-import employee.Executive;
-
 import java.util.Scanner;
 
 public class Tester

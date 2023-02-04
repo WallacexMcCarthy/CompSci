@@ -1,7 +1,6 @@
 package numberformater;
 
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class Tester
 {
