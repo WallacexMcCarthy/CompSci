@@ -88,24 +88,25 @@ public class DrawCircle extends JFrame implements MouseListener
 
     }
 
-
     // These methods are not used but are required to implement MouseListener
     @Override
     public void mouseClicked(MouseEvent e) {
     }
-
-
     @Override
     public void mouseReleased(MouseEvent e) {
     }
-
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
-
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+    @Override
+    public void repaint()
+    {
+        Graphics graphics = getGraphics();
+        graphics.clearRect(0, 0, 800, 800);
     }
 }
