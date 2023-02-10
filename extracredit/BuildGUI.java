@@ -2,10 +2,12 @@ package extracredit;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BuildGUI extends Component implements MouseListener
+public class BuildGUI extends Component implements MouseListener, ActionListener
 {
     private final JButton button;
     private final JPanel panel;
@@ -25,7 +27,10 @@ public class BuildGUI extends Component implements MouseListener
         button = new JButton("Yes");
         button.setBounds(350, 350, 100, 30);
         button.setBackground(Color.ORANGE);
+        // This line will make the button go to a random place when the cursor hits the boarder.
         button.addMouseListener(this);
+        // This line will make the button go to a random place when clicked.
+//        button.addActionListener(this);
         panel.add(label);
         panel.add(button);
         panel.setVisible(true);
@@ -45,6 +50,8 @@ public class BuildGUI extends Component implements MouseListener
      */
     @Override
     public void mouseEntered(final MouseEvent e) { button.move(randomCoordinate(), randomCoordinate()); }
+    @Override
+    public void actionPerformed(ActionEvent e) { button.move(randomCoordinate(), randomCoordinate()); }
     @Override
     public void mouseClicked(MouseEvent e) {}
     @Override
