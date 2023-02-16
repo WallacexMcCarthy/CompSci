@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BuildGUI extends Component implements MouseListener, ActionListener
+public class BuildGUI extends Component implements MouseListener
 {
-    private final JButton button;
-    private final JPanel panel;
-    private final JFrame frame;
-    private final JLabel label;
+    private final JButton button, noButton;
+    private final JPanel panel, endPanel;
+    private JFrame frame, endFrame;
+    private final JLabel label, finalLabel;
     public BuildGUI()
     {
         frame = new JFrame();
@@ -21,16 +21,36 @@ public class BuildGUI extends Component implements MouseListener, ActionListener
         panel = new JPanel();
         panel.setLayout(null);
         panel.setSize(800,800);
-        panel.setBackground(Color.CYAN);
+        panel.setBackground(Color.WHITE);
+        endPanel = new JPanel();
+        endPanel.setLayout(null);
+        endPanel.setSize(800,800);
+        endPanel.setBackground(Color.CYAN);
         label = new JLabel("Do you like money??? Click the button ot get some!");
         label.setBounds(230, 300, 340, 30);
+        finalLabel = new JLabel("You dont want any money?? Lame!!");
+        finalLabel.setBounds(230, 300, 340, 30);
         button = new JButton("Yes");
         button.setBounds(350, 350, 100, 30);
         button.setBackground(Color.ORANGE);
+        noButton = new JButton("No");
+        noButton.setBounds(350, 390, 100, 30);
+        noButton.setBackground(Color.ORANGE);
+        endPanel.add(finalLabel);
+        panel.add(noButton);
         // This line will make the button go to a random place when the cursor hits the boarder.
         button.addMouseListener(this);
-        // This line will make the button go to a random place when clicked.
-//        button.addActionListener(this);
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                endFrame = new JFrame();
+                endFrame.setSize(800, 800);
+                endFrame.add(endPanel);
+                endFrame.setVisible(true);
+                frame.dispose();
+                endFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        });
         panel.add(label);
         panel.add(button);
         panel.setVisible(true);
@@ -50,8 +70,6 @@ public class BuildGUI extends Component implements MouseListener, ActionListener
      */
     @Override
     public void mouseEntered(final MouseEvent e) { button.move(randomCoordinate(), randomCoordinate()); }
-    @Override
-    public void actionPerformed(ActionEvent e) { button.move(randomCoordinate(), randomCoordinate()); }
     @Override
     public void mouseClicked(MouseEvent e) {}
     @Override
